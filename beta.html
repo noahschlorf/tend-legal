@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Apply — Tend Golf Beta</title>
+  <meta name="description" content="Apply for one of 20 lifetime memberships to the Tend Golf beta study.">
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FAF6EE'/%3E%3Ctext x='50%25' y='66%25' text-anchor='middle' font-family='Georgia,serif' font-size='44' font-weight='600' fill='%23B0203A'%3ET%3C/text%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg: #FAF6EE; --bg-elev: #F2EBDA; --bg-deep: #ECE3CC;
+      --ink: #1A1A1A; --ink-2: #3B3B3B; --ink-mute: #6E6862; --ink-faint: #A29A8E;
+      --rule: #D9D2C0; --accent: #B0203A; --accent-soft: #F4DAE0; --accent-ink: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: var(--bg); color: var(--ink); }
+    body { font-family: 'Newsreader', Georgia, serif; line-height: 1.5; font-size: 17px; min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 22px 22px 60px; }
+
+    nav.top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--rule); margin-bottom: 36px; }
+    nav.top .brand { display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--accent); text-decoration: none; }
+    nav.top .brand .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    nav.top .back { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+    h1 { font-weight: 500; font-size: clamp(32px, 5vw, 44px); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 14px; }
+    p.lede { color: var(--ink-2); font-size: 16px; max-width: 560px; margin-bottom: 28px; }
+    .accent-rule { width: 56px; height: 2px; background: var(--accent); margin-bottom: 18px; }
+
+    .form-card { background: var(--bg-elev); border: 1px solid var(--rule); border-radius: 18px; padding: 28px 22px; margin-top: 24px; }
+
+    /* Tally embed sizing */
+    iframe.tally { width: 100%; min-height: 720px; border: 0; background: transparent; }
+
+    .field { margin: 0 0 18px 0; }
+    .field label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute); font-weight: 600; text-transform: uppercase; margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 14px; font-size: 15px;
+      font-family: 'Newsreader', Georgia, serif;
+      background: var(--bg); color: var(--ink);
+      border: 1px solid var(--rule); border-radius: 10px;
+      outline: none; transition: border-color 0.15s ease;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+    .field .help { font-size: 12px; color: var(--ink-faint); margin-top: 4px; font-family: -apple-system, sans-serif; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 14px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 600; font-size: 15px; text-decoration: none; border: 0; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); width: 100%; justify-content: center; box-shadow: 0 4px 12px rgba(176,32,58,0.18); }
+    .btn-primary:hover { background: #99172e; }
+
+    .success-card { background: #E9F4EE; border: 1px solid #1F8A4C; border-radius: 14px; padding: 18px 20px; margin-top: 20px; display: none; }
+    .success-card .heading { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #1F8A4C; font-weight: 700; margin-bottom: 6px; }
+
+    .meta-row { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+    .meta-row .chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--accent); padding: 6px 12px; background: var(--bg-elev); border: 1px solid var(--rule); border-radius: 999px; }
+
+    footer { padding-top: 36px; margin-top: 36px; border-top: 1px solid var(--rule); color: var(--ink-faint); font-size: 12px; font-family: -apple-system, sans-serif; display: flex; gap: 14px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    footer a { color: var(--ink-mute); }
+    footer .copy { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="top">
+    <a href="/" class="brand"><span class="dot"></span>TEND&nbsp;·&nbsp;GOLF</a>
+    <a href="/" class="back">← back</a>
+  </nav>
+
+  <div class="accent-rule"></div>
+  <div class="eyebrow">BETA STUDY</div>
+  <h1>Apply for a lifetime spot.</h1>
+  <p class="lede">
+    20 spots. Lifetime free access in exchange for one real round and a 5-minute voice memo
+    telling me what broke. iOS only.
+  </p>
+
+  <div class="meta-row">
+    <span class="chip">20 SPOTS</span>
+    <span class="chip">LIFETIME ACCESS</span>
+    <span class="chip">2 WEEKS · 1 ROUND</span>
+  </div>
+
+  <div class="form-card">
+    <form id="apply" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" placeholder="for the TestFlight invite">
+      </div>
+      <div class="field">
+        <label for="reddit">Reddit handle <span style="text-transform: none; color: var(--ink-faint);">(optional)</span></label>
+        <input id="reddit" name="reddit" type="text" placeholder="u/yourname">
+        <div class="help">So I can match the application to your reply if you commented on the post.</div>
+      </div>
+      <div class="field">
+        <label for="hcp">Handicap (or "rough estimate")</label>
+        <input id="hcp" name="hcp" type="text" placeholder="e.g. 12, scratch, ~20">
+      </div>
+      <div class="field">
+        <label for="phone">iPhone model</label>
+        <select id="phone" name="phone" required>
+          <option value="" disabled selected>Pick one</option>
+          <option>iPhone 16 / 16 Pro / 16 Pro Max / 16 Plus</option>
+          <option>iPhone 15 / 15 Pro / 15 Pro Max / 15 Plus</option>
+          <option>iPhone 14 / 14 Pro / 14 Plus / 14 Pro Max</option>
+          <option>iPhone 13 / 13 mini / 13 Pro / 13 Pro Max</option>
+          <option>iPhone 12 / 12 mini / 12 Pro / 12 Pro Max</option>
+          <option>iPhone 11 / 11 Pro / 11 Pro Max / SE</option>
+          <option>Older / unsure</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rangefinder">Rangefinder or GPS watch you use</label>
+        <input id="rangefinder" name="rangefinder" type="text" placeholder="e.g. Bushnell Tour V5, Garmin S70, Shot Scope">
+      </div>
+      <div class="field">
+        <label for="current">Scoring app you use today</label>
+        <input id="current" name="current" type="text" placeholder="18Birdies, Hole19, GolfShot, paper card, none…">
+      </div>
+      <div class="field">
+        <label for="next-round">When's your next round?</label>
+        <input id="next-round" name="next-round" type="text" placeholder="e.g. this Saturday, sometime next week">
+      </div>
+      <div class="field" style="margin-bottom: 26px;">
+        <label for="why">Anything else I should know? <span style="text-transform: none; color: var(--ink-faint);">(optional)</span></label>
+        <textarea id="why" name="why" rows="3" placeholder="Honest reactions only — that's the whole point."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send application <span style="font-size: 18px;">→</span></button>
+    </form>
+
+    <div class="success-card" id="success">
+      <div class="heading">✓ APPLICATION RECEIVED</div>
+      <p style="color: var(--ink-2); font-size: 14px;">Thanks. If you're picked I'll send a TestFlight link to your email within 48 hours. If 20 spots fill before I get to you I'll let you know.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copy">© 2026 TEND GOLF</div>
+    <div>
+      <a href="mailto:hello@tendgolf.app">hello@tendgolf.app</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // The form submits via Formspree — set up below. Until you create a Formspree
+  // endpoint, this falls back to a mailto: handler so applications still reach
+  // you. Replace `FORM_ENDPOINT` with your real https://formspree.io/f/XXXXXX
+  // URL once created (free, no signup-required-to-receive setup).
+  const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/abcdwxyz"
+
+  const form = document.getElementById('apply');
+  const success = document.getElementById('success');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const data = new FormData(form);
+
+    if (FORM_ENDPOINT) {
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      } catch (err) { /* fall through to mailto */ }
+    }
+
+    // Fallback: open mailto with the form values prefilled.
+    const subject = encodeURIComponent('Tend Beta Application — ' + (data.get('name') || 'Applicant'));
+    const lines = [];
+    for (const [k, v] of data.entries()) {
+      if (v) lines.push(k.toUpperCase() + ': ' + v);
+    }
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = 'mailto:hello@tendgolf.app?subject=' + subject + '&body=' + body;
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = 'Send application <span style="font-size: 18px;">→</span>';
+    }, 1500);
+  });
+</script>
+
+</body>
+</html>
