@@ -151,26 +151,56 @@
 </div>
 
 <script>
-  // The form submits via Formspree — set up below. Until you create a Formspree
-  // endpoint, this falls back to a mailto: handler so applications still reach
-  // you. Replace `FORM_ENDPOINT` with your real https://formspree.io/f/XXXXXX
-  // URL once created (free, no signup-required-to-receive setup).
-  const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/abcdwxyz"
+  // ============================================================
+  // BETA FORM SUBMISSION SETUP
+  // ============================================================
+  // PICK ONE of the following. The form ships with a mailto fallback
+  // so applications still reach you while you set up an endpoint.
+  //
+  // OPTION A — Formspree (recommended, ~30s setup):
+  //   1. Go to https://formspree.io and sign up with hello@tendgolf.app
+  //   2. Create a new form. Copy the endpoint URL.
+  //   3. Paste it into FORMSPREE_ENDPOINT below (e.g. "https://formspree.io/f/xkndyqab")
+  //   4. Verify your email when Formspree sends the confirmation.
+  //   Free tier: 50 submissions / month, plenty for 20-spot beta.
+  //
+  // OPTION B — Tally embedded form (~2 min setup):
+  //   1. Go to https://tally.so and sign up.
+  //   2. Build a form mirroring the fields below (name/email/handicap/etc).
+  //   3. Get the embed URL (looks like https://tally.so/embed/XXXXXX).
+  //   4. Paste it into TALLY_EMBED_URL below.
+  //   When TALLY_EMBED_URL is set, the native form is REPLACED by the
+  //   Tally iframe — single source of truth, no fallback needed.
+  //
+  // OPTION C — leave both blank: applications open the user's mail
+  //   client pre-filled to hello@tendgolf.app. Works but loses any
+  //   user who doesn't have a configured mail app on their phone.
+  // ============================================================
+  const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xkndyqab"
+  const TALLY_EMBED_URL    = ""; // e.g. "https://tally.so/embed/3jOY15"
+
+  // If a Tally form is configured, replace the native form with the iframe.
+  if (TALLY_EMBED_URL) {
+    const card = document.querySelector('.form-card');
+    card.innerHTML = '<iframe class="tally" src="' + TALLY_EMBED_URL +
+      '?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" ' +
+      'title="Tend beta application"></iframe>';
+  }
 
   const form = document.getElementById('apply');
   const success = document.getElementById('success');
   const btn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', async (e) => {
+  if (form) form.addEventListener('submit', async (e) => {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
     const data = new FormData(form);
 
-    if (FORM_ENDPOINT) {
+    if (FORMSPREE_ENDPOINT) {
       try {
-        const res = await fetch(FORM_ENDPOINT, {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' }
@@ -184,7 +214,8 @@
       } catch (err) { /* fall through to mailto */ }
     }
 
-    // Fallback: open mailto with the form values prefilled.
+    // Fallback: open mailto with the form values prefilled. Reliable on
+    // desktop; flakier on mobile if no Mail app is configured.
     const subject = encodeURIComponent('Tend Beta Application — ' + (data.get('name') || 'Applicant'));
     const lines = [];
     for (const [k, v] of data.entries()) {

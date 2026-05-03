@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "_comment": "Tend course catalog. App fetches this every 6h and merges into the local DB. To add a course: append to courses[]. To update an existing seed course: match its id (e.g. course-baker-national) and override the fields you want to change. Seed courses are NEVER removed by the sync — only added/updated. Host this file at https://tendgolf.app/courses.json (GitHub Pages alongside index.html).",
+  "courses": [
+    {
+      "id": "course-example-public",
+      "name": "Example Public",
+      "city": "Anytown, MN",
+      "rating": 70.0,
+      "slope": 113,
+      "tees": [
+        { "id": "course-example-public-blue", "name": "Blue", "yards": 6500, "rating": 70.0, "slope": 113, "colorHex": "#1a4ea8" },
+        { "id": "course-example-public-white", "name": "White", "yards": 6100, "rating": 68.5, "slope": 110, "colorHex": "#FFFFFF" }
+      ],
+      "holes": [
+        { "number": 1,  "par": 4, "yards": 380, "hcp": 7  },
+        { "number": 2,  "par": 5, "yards": 540, "hcp": 3  },
+        { "number": 3,  "par": 3, "yards": 165, "hcp": 13 },
+        { "number": 4,  "par": 4, "yards": 410, "hcp": 1  },
+        { "number": 5,  "par": 4, "yards": 360, "hcp": 11 },
+        { "number": 6,  "par": 4, "yards": 395, "hcp": 5  },
+        { "number": 7,  "par": 3, "yards": 180, "hcp": 17 },
+        { "number": 8,  "par": 5, "yards": 510, "hcp": 9  },
+        { "number": 9,  "par": 4, "yards": 405, "hcp": 15 },
+        { "number": 10, "par": 4, "yards": 400, "hcp": 6  },
+        { "number": 11, "par": 5, "yards": 530, "hcp": 4  },
+        { "number": 12, "par": 3, "yards": 170, "hcp": 14 },
+        { "number": 13, "par": 4, "yards": 420, "hcp": 2  },
+        { "number": 14, "par": 4, "yards": 370, "hcp": 12 },
+        { "number": 15, "par": 4, "yards": 390, "hcp": 8  },
+        { "number": 16, "par": 3, "yards": 195, "hcp": 18 },
+        { "number": 17, "par": 5, "yards": 525, "hcp": 10 },
+        { "number": 18, "par": 4, "yards": 435, "hcp": 16 }
+      ]
+    }
+  ]
+}
