@@ -1,12 +1,8 @@
-&lt;!-- TODO: Have a lawyer review this document before public launch. This is boilerplate
-     written to unblock App Store submission. It is NOT legally vetted.
-     Contact hello@tend.golf for the attorney of record. --&gt;
-
 # Terms of Service
 
-**Effective Date:** [INSERT DATE BEFORE LAUNCH]
+**Effective Date:** May 3, 2026
 **App:** Tend — Golf Scorecard
-**Contact:** hello@tend.golf
+**Contact:** hello@tendgolf.app
 
 ---
 
@@ -62,7 +58,7 @@ You agree not to:
 - Reverse-engineer, decompile, or attempt to extract source code from the app.
 - Use the app for any purpose that violates applicable law.
 - Attempt to gain unauthorized access to other users' data or our backend systems.
-- Exploit bugs or vulnerabilities rather than reporting them to hello@tend.golf.
+- Exploit bugs or vulnerabilities rather than reporting them to hello@tendgolf.app.
 
 ---
 
@@ -104,4 +100,4 @@ We may update these Terms from time to time. We will notify you of material chan
 
 ## 14. Contact
 
-Questions: **hello@tend.golf**
+Questions: **hello@tendgolf.app**
