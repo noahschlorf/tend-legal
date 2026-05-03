@@ -16,7 +16,6 @@ We collect only what is necessary to operate Tend. Here is a plain-English break
 | **Name / display name** | Shown in the app so your scorecard feels personal. You can change or delete it at any time. |
 | **Voice / audio** | Captured when you tap the mic button to speak your score. Audio is streamed in real time to our speech-recognition provider (Deepgram) and is **not stored** after transcription. |
 | **Golf scores and round data** | The core product. Hole scores, putts, fairways hit, GIR, and related stats you enter during a round. |
-| **App usage / diagnostics** | Crash reports and anonymous performance data used to fix bugs and improve the app. |
 
 We do **not** collect location data, contacts, photos, or any data unrelated to golf scoring.
 
@@ -27,7 +26,6 @@ We do **not** collect location data, contacts, photos, or any data unrelated to 
 - **Golf scores** — stored securely in your account so you can access history across devices and track improvement over time.
 - **Voice audio** — processed once for speech-to-text, then discarded. We never record ambient audio; the mic is only active while you have it toggled on.
 - **Email / name** — used for account identification only. We do not send marketing emails unless you explicitly opt in.
-- **Crash/diagnostics** — used internally to improve stability. Not linked to your identity.
 
 ---
 
@@ -40,7 +38,7 @@ We share data with the following processors to operate the service:
 | **Supabase** (supabase.com) | Your account data and golf scores | Cloud database and authentication backend |
 | **Deepgram** (deepgram.com) | Audio stream while mic is active | Real-time speech-to-text transcription |
 | **Apple** (apple.com) | Subscription purchase + receipt data | Process Tend Pro subscriptions through the App Store |
-| **Railway** (railway.app) | Beta application form data only (name, email, handicap, phone model) | Stores beta study applications submitted via tendgolf.app |
+| **Railway** (railway.app) | Beta application form data: name, email, Reddit handle, handicap, iPhone model, rangefinder, current scoring app, next round date, free-text notes, and a /24-truncated IP address (for rate limiting) | Stores beta study applications submitted via tendgolf.app |
 
 Both processors are bound by data processing agreements and do not use your data for their own purposes. No data is sold to advertisers or brokers.
 
@@ -50,7 +48,6 @@ Both processors are bound by data processing agreements and do not use your data
 
 - **Golf scores and account data**: retained as long as your account is active. Deleted within 30 days of account deletion.
 - **Voice audio**: never stored. Discarded after each transcription request.
-- **Crash logs**: retained for up to 90 days, then purged.
 
 ---
 
@@ -84,8 +81,9 @@ All data is transmitted over TLS and stored with encryption at rest via Supabase
 The following data types are collected and linked to your identity (as reported to Apple's App Privacy label):
 
 - **Contact Info** — email address and name (linked to identity, used for app functionality)
-- **User Content** — golf scores and audio (audio not stored; scores linked to identity)
-- **Identifiers** — user ID and device identifiers used for crash reporting (linked to identity)
+- **User Content** — golf scores (linked to identity)
+- **Audio Data** — voice audio streamed for speech-to-text only, NOT linked to your identity and NOT retained by us or our processor (Deepgram MIP opt-out)
+- **Identifiers** — Supabase user ID linked to your Sign in with Apple account (used for app functionality)
 - **Purchases** — purchase history of Tend Pro subscriptions (linked to identity, used for app functionality)
 - **Usage Data** — product interaction events (analytics; not used for tracking)
 
