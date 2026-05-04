@@ -38,16 +38,17 @@ We share data with the following processors to operate the service:
 | **Supabase** (supabase.com) | Your account data and golf scores | Cloud database and authentication backend |
 | **Deepgram** (deepgram.com) | Audio stream while mic is active | Real-time speech-to-text transcription |
 | **Apple** (apple.com) | Subscription purchase + receipt data | Process Tend Pro subscriptions through the App Store |
-| **Railway** (railway.app) | Beta application form data: name, email, Reddit handle, handicap, iPhone model, rangefinder, current scoring app, next round date, free-text notes, and a /24-truncated IP address (for rate limiting) | Stores beta study applications submitted via tendgolf.app |
+| **Railway** (railway.app) | (a) Beta application form data: name, email, Reddit handle, handicap, iPhone model, rangefinder, current scoring app, next round date, free-text notes, and a /24-truncated IP address (for rate limiting). (b) Misparse reports voluntarily submitted via the "Voice got it wrong?" button: the original voice transcript, the parsed score fields, your written correction, hole number, par, course name, app version, and Supabase user ID. | Stores beta study applications + voluntary voice-misparse reports used to improve the parser |
 
-Both processors are bound by data processing agreements and do not use your data for their own purposes. No data is sold to advertisers or brokers.
+These processors are bound by data processing agreements and do not use your data for their own purposes. No data is sold to advertisers or brokers.
 
 ---
 
 ## 4. Data Retention
 
 - **Golf scores and account data**: retained as long as your account is active. Deleted within 30 days of account deletion.
-- **Voice audio**: never stored. Discarded after each transcription request.
+- **Voice audio**: never stored. Discarded after each transcription request (Deepgram opted out of model-improvement retention via `mip_opt_out=true`).
+- **Misparse reports**: retained as long as needed to improve the parser. You can request deletion of your reports by emailing hello@tendgolf.app with your Supabase user ID.
 
 ---
 

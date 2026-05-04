@@ -79,8 +79,8 @@
 </tr>
 <tr>
 <td><strong>Railway</strong> (railway.app)</td>
-<td>Beta application form data: name, email, Reddit handle, handicap, iPhone model, rangefinder, current scoring app, next round date, free-text notes, and a /24-truncated IP address (for rate limiting)</td>
-<td>Stores beta study applications submitted via tendgolf.app</td>
+<td>(a) Beta application form data: name, email, Reddit handle, handicap, iPhone model, rangefinder, current scoring app, next round date, free-text notes, and a /24-truncated IP address (for rate limiting). (b) Misparse reports voluntarily submitted via the "Voice got it wrong?" button: the original voice transcript, the parsed score fields, your written correction, hole number, par, course name, app version, and Supabase user ID.</td>
+<td>Stores beta study applications + voluntary voice-misparse reports used to improve the parser</td>
 </tr>
 </tbody>
 </table>
@@ -89,7 +89,8 @@
 <h2>4. Data Retention</h2>
 <ul>
 <li><strong>Golf scores and account data</strong>: retained as long as your account is active. Deleted within 30 days of account deletion.</li>
-<li><strong>Voice audio</strong>: never stored. Discarded after each transcription request.</li>
+<li><strong>Voice audio</strong>: never stored. Discarded after each transcription request (Deepgram opted out of model-improvement retention via <code>mip_opt_out=true</code>).</li>
+<li><strong>Misparse reports</strong>: retained as long as needed to improve the parser. You can request deletion of your reports by emailing hello@tendgolf.app with your Supabase user ID.</li>
 </ul>
 <hr />
 <h2>5. Your Rights</h2>
