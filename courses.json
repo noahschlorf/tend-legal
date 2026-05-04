@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "_comment": "Tend course catalog. App fetches every 6h and merges into the local DB. Verified 2026-05-04 against authoritative sources (BlueGolf, official park districts, USGA NCRDB). To add a course: append to courses[]. To update an existing seed course: match its id and override fields you want to change.",
+  "version": 4,
+  "_comment": "Tend course catalog. App fetches every 6h and merges into the local DB. v4: per-tee per-hole yardages added (yardsByTee map keyed by tee id). Verified 2026-05-04 against authoritative sources (BlueGolf, official park districts, USGA NCRDB).",
   "courses": [
     {
       "id": "course-wild-marsh",
@@ -9,32 +9,32 @@
       "rating": 71.9,
       "slope": 133,
       "tees": [
-        { "id": "course-wild-marsh-black", "name": "Black",  "yards": 6543, "rating": 71.9, "slope": 133, "colorHex": "#1A1A1A" },
-        { "id": "course-wild-marsh-blue",  "name": "Blue",   "yards": 6046, "rating": 69.7, "slope": 128, "colorHex": "#1a4ea8" },
+        { "id": "course-wild-marsh-black", "name": "Black",      "yards": 6543, "rating": 71.9, "slope": 133, "colorHex": "#1A1A1A" },
+        { "id": "course-wild-marsh-blue",  "name": "Blue",       "yards": 6046, "rating": 69.7, "slope": 128, "colorHex": "#1a4ea8" },
         { "id": "course-wild-marsh-bw",    "name": "Blue/White", "yards": 5767, "rating": 68.4, "slope": 125, "colorHex": "#7DA3D9" },
-        { "id": "course-wild-marsh-white", "name": "White",  "yards": 5523, "rating": 67.2, "slope": 123, "colorHex": "#FFFFFF" },
-        { "id": "course-wild-marsh-gold",  "name": "Gold",   "yards": 5002, "rating": 64.6, "slope": 118, "colorHex": "#D4AF37" },
-        { "id": "course-wild-marsh-red",   "name": "Red",    "yards": 4561, "rating": 69.5, "slope": 114, "colorHex": "#B0203A" }
+        { "id": "course-wild-marsh-white", "name": "White",      "yards": 5523, "rating": 67.2, "slope": 123, "colorHex": "#FFFFFF" },
+        { "id": "course-wild-marsh-gold",  "name": "Gold",       "yards": 5002, "rating": 64.6, "slope": 118, "colorHex": "#D4AF37" },
+        { "id": "course-wild-marsh-red",   "name": "Red",        "yards": 4561, "rating": 69.5, "slope": 114, "colorHex": "#B0203A" }
       ],
       "holes": [
-        { "number": 1,  "par": 4, "yards": 367, "hcp": 9  },
-        { "number": 2,  "par": 4, "yards": 394, "hcp": 5  },
-        { "number": 3,  "par": 4, "yards": 324, "hcp": 13 },
-        { "number": 4,  "par": 3, "yards": 144, "hcp": 15 },
-        { "number": 5,  "par": 4, "yards": 397, "hcp": 3  },
-        { "number": 6,  "par": 4, "yards": 323, "hcp": 7  },
-        { "number": 7,  "par": 5, "yards": 561, "hcp": 1  },
-        { "number": 8,  "par": 3, "yards": 134, "hcp": 17 },
-        { "number": 9,  "par": 4, "yards": 338, "hcp": 11 },
-        { "number": 10, "par": 4, "yards": 400, "hcp": 4  },
-        { "number": 11, "par": 4, "yards": 277, "hcp": 10 },
-        { "number": 12, "par": 4, "yards": 370, "hcp": 2  },
-        { "number": 13, "par": 3, "yards": 199, "hcp": 12 },
-        { "number": 14, "par": 4, "yards": 348, "hcp": 8  },
-        { "number": 15, "par": 4, "yards": 359, "hcp": 6  },
-        { "number": 16, "par": 3, "yards": 140, "hcp": 18 },
-        { "number": 17, "par": 5, "yards": 502, "hcp": 14 },
-        { "number": 18, "par": 5, "yards": 469, "hcp": 16 }
+        { "number": 1,  "par": 4, "yards": 367, "hcp": 9,  "yardsByTee": { "course-wild-marsh-black": 379, "course-wild-marsh-blue": 367, "course-wild-marsh-bw": 367, "course-wild-marsh-white": 360, "course-wild-marsh-gold": 348, "course-wild-marsh-red": 325 } },
+        { "number": 2,  "par": 4, "yards": 394, "hcp": 5,  "yardsByTee": { "course-wild-marsh-black": 421, "course-wild-marsh-blue": 394, "course-wild-marsh-bw": 394, "course-wild-marsh-white": 334, "course-wild-marsh-gold": 220, "course-wild-marsh-red": 218 } },
+        { "number": 3,  "par": 4, "yards": 324, "hcp": 13, "yardsByTee": { "course-wild-marsh-black": 351, "course-wild-marsh-blue": 324, "course-wild-marsh-bw": 324, "course-wild-marsh-white": 296, "course-wild-marsh-gold": 296, "course-wild-marsh-red": 255 } },
+        { "number": 4,  "par": 3, "yards": 144, "hcp": 15, "yardsByTee": { "course-wild-marsh-black": 155, "course-wild-marsh-blue": 144, "course-wild-marsh-bw": 133, "course-wild-marsh-white": 133, "course-wild-marsh-gold": 126, "course-wild-marsh-red": 122 } },
+        { "number": 5,  "par": 4, "yards": 397, "hcp": 3,  "yardsByTee": { "course-wild-marsh-black": 415, "course-wild-marsh-blue": 397, "course-wild-marsh-bw": 372, "course-wild-marsh-white": 372, "course-wild-marsh-gold": 305, "course-wild-marsh-red": 300 } },
+        { "number": 6,  "par": 4, "yards": 323, "hcp": 7,  "yardsByTee": { "course-wild-marsh-black": 353, "course-wild-marsh-blue": 323, "course-wild-marsh-bw": 320, "course-wild-marsh-white": 320, "course-wild-marsh-gold": 171, "course-wild-marsh-red": 150 } },
+        { "number": 7,  "par": 5, "yards": 561, "hcp": 1,  "yardsByTee": { "course-wild-marsh-black": 616, "course-wild-marsh-blue": 561, "course-wild-marsh-bw": 516, "course-wild-marsh-white": 516, "course-wild-marsh-gold": 515, "course-wild-marsh-red": 410 } },
+        { "number": 8,  "par": 3, "yards": 134, "hcp": 17, "yardsByTee": { "course-wild-marsh-black": 150, "course-wild-marsh-blue": 134, "course-wild-marsh-bw": 134, "course-wild-marsh-white": 123, "course-wild-marsh-gold": 119, "course-wild-marsh-red":  94 } },
+        { "number": 9,  "par": 4, "yards": 338, "hcp": 11, "yardsByTee": { "course-wild-marsh-black": 347, "course-wild-marsh-blue": 338, "course-wild-marsh-bw": 338, "course-wild-marsh-white": 319, "course-wild-marsh-gold": 311, "course-wild-marsh-red": 309 } },
+        { "number": 10, "par": 4, "yards": 400, "hcp": 4,  "yardsByTee": { "course-wild-marsh-black": 416, "course-wild-marsh-blue": 400, "course-wild-marsh-bw": 400, "course-wild-marsh-white": 380, "course-wild-marsh-gold": 350, "course-wild-marsh-red": 348 } },
+        { "number": 11, "par": 4, "yards": 277, "hcp": 10, "yardsByTee": { "course-wild-marsh-black": 345, "course-wild-marsh-blue": 277, "course-wild-marsh-bw": 259, "course-wild-marsh-white": 259, "course-wild-marsh-gold": 249, "course-wild-marsh-red": 232 } },
+        { "number": 12, "par": 4, "yards": 370, "hcp": 2,  "yardsByTee": { "course-wild-marsh-black": 424, "course-wild-marsh-blue": 370, "course-wild-marsh-bw": 235, "course-wild-marsh-white": 235, "course-wild-marsh-gold": 260, "course-wild-marsh-red": 220 } },
+        { "number": 13, "par": 3, "yards": 199, "hcp": 12, "yardsByTee": { "course-wild-marsh-black": 218, "course-wild-marsh-blue": 199, "course-wild-marsh-bw": 183, "course-wild-marsh-white": 183, "course-wild-marsh-gold": 101, "course-wild-marsh-red":  97 } },
+        { "number": 14, "par": 4, "yards": 348, "hcp": 8,  "yardsByTee": { "course-wild-marsh-black": 387, "course-wild-marsh-blue": 348, "course-wild-marsh-bw": 348, "course-wild-marsh-white": 323, "course-wild-marsh-gold": 319, "course-wild-marsh-red": 301 } },
+        { "number": 15, "par": 4, "yards": 359, "hcp": 6,  "yardsByTee": { "course-wild-marsh-black": 380, "course-wild-marsh-blue": 359, "course-wild-marsh-bw": 359, "course-wild-marsh-white": 329, "course-wild-marsh-gold": 321, "course-wild-marsh-red": 282 } },
+        { "number": 16, "par": 3, "yards": 140, "hcp": 18, "yardsByTee": { "course-wild-marsh-black": 159, "course-wild-marsh-blue": 140, "course-wild-marsh-bw": 140, "course-wild-marsh-white": 125, "course-wild-marsh-gold": 114, "course-wild-marsh-red":  86 } },
+        { "number": 17, "par": 5, "yards": 502, "hcp": 14, "yardsByTee": { "course-wild-marsh-black": 535, "course-wild-marsh-blue": 502, "course-wild-marsh-bw": 502, "course-wild-marsh-white": 473, "course-wild-marsh-gold": 465, "course-wild-marsh-red": 402 } },
+        { "number": 18, "par": 5, "yards": 469, "hcp": 16, "yardsByTee": { "course-wild-marsh-black": 492, "course-wild-marsh-blue": 469, "course-wild-marsh-bw": 443, "course-wild-marsh-white": 443, "course-wild-marsh-gold": 412, "course-wild-marsh-red": 410 } }
       ]
     }
   ]
