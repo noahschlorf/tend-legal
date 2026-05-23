@@ -10,12 +10,12 @@
 </style>
 </head><body>
 <h1>Privacy Policy</h1>
-<p><strong>Effective Date:</strong> May 3, 2026
+<p><strong>Effective Date:</strong> May 23, 2026
 <strong>App:</strong> Tend — Golf Scorecard
 <strong>Contact:</strong> hello@tendgolf.app</p>
 <hr />
 <h2>1. What We Collect</h2>
-<p>We collect only what is necessary to operate Tend. Here is a plain-English breakdown:</p>
+<p>We collect only what is necessary to operate Tend. For this launch build, rounds and score history are local-first and stay on your device unless you choose to submit feedback or a course request.</p>
 <table>
 <thead>
 <tr>
@@ -30,7 +30,7 @@
 </tr>
 <tr>
 <td><strong>Name / display name</strong></td>
-<td>Shown in the app so your scorecard feels personal. You can change or delete it at any time.</td>
+<td>Shown in the app so your scorecard feels personal. Stored on your device for launch.</td>
 </tr>
 <tr>
 <td><strong>Voice / audio</strong></td>
@@ -38,16 +38,31 @@
 </tr>
 <tr>
 <td><strong>Golf scores and round data</strong></td>
-<td>The core product. Hole scores, putts, fairways hit, GIR, and related stats you enter during a round.</td>
+<td>Hole scores, putts, fairways hit, GIR, and related stats. Stored locally on your device for launch and not uploaded to Tend servers.</td>
+</tr>
+<tr>
+<td><strong>Lightweight app events</strong></td>
+<td>Round started, round finished, selected course/tee labels, hole count, total strokes, app version, and whether voice was enabled. Used to confirm the app works for real users and diagnose product issues.</td>
+</tr>
+<tr>
+<td><strong>Feedback text</strong></td>
+<td>Optional bug reports, feature requests, voice feedback, and related app version metadata you submit from the app.</td>
+</tr>
+<tr>
+<td><strong>Course request text and photos</strong></td>
+<td>Optional course names, notes, links, directory source details, scorecard issue descriptions, and scorecard photos used to add or correct course data.</td>
 </tr>
 </tbody>
 </table>
-<p>We do <strong>not</strong> collect location data, contacts, photos, or any data unrelated to golf scoring.</p>
+<p>We do <strong>not</strong> collect location data, contacts, advertising identifiers, or any data unrelated to golf scoring and course support.</p>
 <hr />
 <h2>2. How We Use Your Data</h2>
 <ul>
-<li><strong>Golf scores</strong> — stored securely in your account so you can access history across devices and track improvement over time.</li>
+<li><strong>Golf scores</strong> — stored locally on your device so you can review round history and stats. Tend does not provide cloud round sync in this launch build.</li>
+<li><strong>Lightweight app events</strong> — used to confirm users can start and finish rounds and to diagnose app-quality issues. These events do not include hole-by-hole scorecards.</li>
+<li><strong>Feedback text</strong> — used to fix bugs, prioritize feature requests, and improve voice scoring.</li>
 <li><strong>Voice audio</strong> — processed once for speech-to-text, then discarded. We never record ambient audio; the mic is only active while you have it toggled on.</li>
+<li><strong>Course request text and photos</strong> — used to review missing-course and correction requests.</li>
 <li><strong>Email / name</strong> — used for account identification only. We do not send marketing emails unless you explicitly opt in.</li>
 </ul>
 <hr />
@@ -64,8 +79,8 @@
 <tbody>
 <tr>
 <td><strong>Supabase</strong> (supabase.com)</td>
-<td>Your account data and golf scores</td>
-<td>Cloud database and authentication backend</td>
+<td>Account authentication data, lightweight app events, feedback text, course request text/photos, tester-code status, and Edge Function requests</td>
+<td>Authentication, feedback and course request queues, account deletion, and short-lived Deepgram token minting</td>
 </tr>
 <tr>
 <td><strong>Deepgram</strong> (deepgram.com)</td>
@@ -84,11 +99,13 @@
 </tr>
 </tbody>
 </table>
-<p>Both processors are bound by data processing agreements and do not use your data for their own purposes. No data is sold to advertisers or brokers.</p>
+<p>These processors are bound by data processing agreements and do not use your data for their own purposes. No data is sold to advertisers or brokers.</p>
 <hr />
 <h2>4. Data Retention</h2>
 <ul>
-<li><strong>Golf scores and account data</strong>: retained as long as your account is active. Deleted within 30 days of account deletion.</li>
+<li><strong>Golf scores and round data</strong>: stored locally on your device. They are removed from the device when you sign out, delete your account in the app, delete the app, or clear local app data.</li>
+<li><strong>Account data</strong>: retained as long as your account is active. Server-side account records are deleted within 30 days of account deletion.</li>
+<li><strong>Lightweight app events, feedback text, and course request submissions</strong>: retained while we review product quality and support requests, unless you delete your account or ask us to remove them earlier.</li>
 <li><strong>Voice audio</strong>: never stored. Discarded after each transcription request (Deepgram opted out of model-improvement retention via <code>mip_opt_out=true</code>).</li>
 <li><strong>Misparse reports</strong>: retained as long as needed to improve the parser. You can request deletion of your reports by emailing hello@tendgolf.app with your Supabase user ID.</li>
 </ul>
@@ -113,7 +130,7 @@
 <p>The following data types are collected and linked to your identity (as reported to Apple's App Privacy label):</p>
 <ul>
 <li><strong>Contact Info</strong> — email address and name (linked to identity, used for app functionality)</li>
-<li><strong>User Content</strong> — golf scores (linked to identity)</li>
+<li><strong>User Content</strong> — optional feedback text, course request text/photos, and active voice audio. Golf scores and round history are local-only for launch and are not uploaded to Tend servers.</li>
 <li><strong>Audio Data</strong> — voice audio streamed for speech-to-text only, NOT linked to your identity and NOT retained by us or our processor (Deepgram MIP opt-out)</li>
 <li><strong>Identifiers</strong> — Supabase user ID linked to your Sign in with Apple account (used for app functionality)</li>
 <li><strong>Purchases</strong> — purchase history of Tend Pro subscriptions (linked to identity, used for app functionality)</li>
